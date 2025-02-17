@@ -1,0 +1,31 @@
+{% extends 'pages/base.html' %}
+{% load custom_filters %}
+
+{% block title %}My Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-content">
+    <div class="dashboard-header">
+        <h2>Dashboard Overview</h2>
+        <p>Welcome back, {{ user }}</p>
+    </div>
+
+    <div class="stats-grid">
+        {% for item in cards %}
+        <div class="stat-card">
+            <i class="fas {% if item.title == 'Users' %}fa-users{% elif item.title == 'Orders' %}fa-shopping-cart{% else %}fa-dollar-sign{% endif %}"></i>
+            <div class="stat-info">
+                <h3>{{ item.title }}</h3>
+                <p>
+                    {% if item.title == 'Revenue' %}
+                        {{ item.count|currency_format }}
+                    {% else %}
+                        {{ item.count|number_format }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 
