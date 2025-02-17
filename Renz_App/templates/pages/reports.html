@@ -1,0 +1,32 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+<div class="reports-content">
+    <div class="dashboard-header">
+        <h2>Reports Overview</h2>
+        <p>View and manage your reports</p>
+    </div>
+
+    <div class="reports-grid">
+        {% for report in reports %}
+        <div class="report-card">
+            <div class="report-info">
+                <h3>{{ report.name }}</h3>
+                <p class="period">{{ report.period }}</p>
+                <p class="update-date">Last updated: {{ report.last_updated }}</p>
+            </div>
+            <div class="report-actions">
+                <button class="btn-view">
+                    <i class="fas fa-eye"></i> View
+                </button>
+                <button class="btn-download">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

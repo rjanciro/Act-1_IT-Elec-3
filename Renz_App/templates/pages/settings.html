@@ -1,0 +1,59 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class="settings-content">
+    <div class="dashboard-header">
+        <h2>Settings</h2>
+        <p>Manage your account settings</p>
+    </div>
+
+    <div class="settings-grid">
+        <div class="settings-card">
+            <h3>Profile Settings</h3>
+            <div class="settings-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" value="{{ settings.profile.name }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" value="{{ settings.profile.email }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" value="{{ settings.profile.role }}" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-card">
+            <h3>Preferences</h3>
+            <div class="settings-form">
+                <div class="form-group">
+                    <label>Theme</label>
+                    <select>
+                        <option {% if settings.preferences.theme == 'Light' %}selected{% endif %}>Light</option>
+                        <option {% if settings.preferences.theme == 'Dark' %}selected{% endif %}>Dark</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Notifications</label>
+                    <select>
+                        <option {% if settings.preferences.notifications == 'Enabled' %}selected{% endif %}>Enabled</option>
+                        <option {% if settings.preferences.notifications == 'Disabled' %}selected{% endif %}>Disabled</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Language</label>
+                    <select>
+                        <option {% if settings.preferences.language == 'English' %}selected{% endif %}>English</option>
+                        <option {% if settings.preferences.language == 'Spanish' %}selected{% endif %}>Spanish</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
